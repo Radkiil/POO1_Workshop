@@ -16,14 +16,21 @@ public class Workshop {
     public int mayorDeTresNumeros(int a, int b, int c) {
         // TODO: Implementar el método para retornar el mayor de los tres números enteros.
         // Ejemplo: Si a = 3, b = 7, y c = 5, el resultado debería ser 7.
-        return 0;
+        if (a>b && a>c){
+            return a;}
+        else
+            if (b>a && b>c){
+                return b;}
+            else
+                return c;
     }
 
     // Método que retorna la tabla de multiplicar de un número
     public int[] tablaMultiplicar(int numero, int limite) {
         // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
         // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
-        return new int[0];
+        for (int i=1; i<=limite; i++){
+        return new int[numero+"*"+i+"="+(numero*i)];}
     }
 
     // Método que calcula el factorial de un número entero

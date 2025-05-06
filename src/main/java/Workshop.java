@@ -26,11 +26,11 @@ public class Workshop {
     }
 
     // Método que retorna la tabla de multiplicar de un número
-    public int[] tablaMultiplicar(int numero, int limite) {
+    public int[] tablaMultiplicar(int numero, int limite, int resultado) {
         // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
         // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
-        for (int i=1; i<=limite; i++){
-        return new int[numero+"*"+i+"="+(numero*i)];}
+        while(limite<=10){
+        return new int[numero+"*"+limite+"="+(numero*limite)];}
     }
 
     // Método que calcula el factorial de un número entero

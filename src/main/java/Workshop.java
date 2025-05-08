@@ -1,8 +1,8 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Workshop {
     public static void main(String[] args) {
-
     }
 
     // Método que suma dos números enteros
@@ -26,11 +26,14 @@ public class Workshop {
     }
 
     // Método que retorna la tabla de multiplicar de un número
-    public int[] tablaMultiplicar(int numero, int limite, int resultado) {
+    public int[] tablaMultiplicar(int numero, int limite) {
+        int[] rta = new int [limite];
         // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
         // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
-        while(limite<=10){
-        return new int[numero+"*"+limite+"="+(numero*limite)];}
+        for(int i=0; i<limite; i++) {
+            rta[i] = numero*(i+1);
+        }
+        return rta;
     }
 
     // Método que calcula el factorial de un número entero
@@ -38,7 +41,13 @@ public class Workshop {
         // TODO: Implementar el método para calcular el factorial de un número entero.
         // Ejemplo: Si n = 5, el resultado debería ser 120.
         // Lanzar IllegalArgumentException si n es negativo.
-        return 0;
+        int rta = 1;
+        if (n<0) throw new IllegalArgumentException();
+        else if (n==0) return 1;
+        else for (int i = 2; i <= n ; i++) {
+            rta = rta * i;
+            }
+        return rta;
     }
 
     // Método que verifica si un número es primo

@@ -54,7 +54,9 @@ public class Workshop {
     public boolean esPrimo(int numero) {
         // TODO: Implementar el método para verificar si un número es primo.
         // Ejemplo: Si numero = 7, el resultado debería ser true.
-
+    for (int i = 2; i <= Math.sqrt(numero) ; i++) {
+        if (numero % i != 0) return true;
+    }
         return false;
     }
 
@@ -63,7 +65,17 @@ public class Workshop {
         // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
         // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
         // Lanzar IllegalArgumentException si n es negativo.
-        return new int[0];
+        if (n<=0) return new int[0];
+        else if (n==1) return new int[]{0};
+        else {
+            int[] rta = new int[n];
+            rta[0] = 0;
+            rta[1] = 1;
+            for (int i = 2; i < n; i++) {
+                rta[i] = rta[i-1] + rta[i-2];
+                }
+            return rta;
+            }
     }
 
     // Método que suma todos los elementos de un arreglo

@@ -195,28 +195,45 @@ public class Workshop {
     public int[] rotarArreglo(int[] arreglo, int posiciones) {
         // TODO: Implementar el método para rotar un arreglo n posiciones.
         // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [3, 4, 5, 1, 2].
-        return new int[0];
+        int largo = arreglo.length;
+        if (posiciones < 0){
+            posiciones = posiciones + largo;
+        }
+        int[] rta = new int[largo];
+            for (int i = 0; i < largo; i++){
+                rta[(i+posiciones) % largo] = arreglo[i];
+            }
+        return rta;
     }
 
     // Método que cuenta los caracteres en una cadena
     public int contarCaracteres(String cadena) {
         // TODO: Implementar el método para contar el número de caracteres en una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser 5.
-        return 0;
+        return cadena.length();
     }
 
     // Método que invierte una cadena
     public String invertirCadena(String cadena) {
         // TODO: Implementar el método para invertir una cadena.
         // Ejemplo: Si cadena = "Hello", el resultado debería ser "olleH".
-        return "";
+        String inv = "";
+        for (int i = cadena.length()-1; i >=0; i--) {
+            inv = inv + cadena.charAt(i);
+        }
+        return inv;
     }
 
     // Método que verifica si una cadena es un palíndromo
     public boolean esPalindromo(String cadena) {
         // TODO: Implementar el método para verificar si una cadena es un palíndromo.
         // Ejemplo: Si cadena = "madam", el resultado debería ser true.
-        return false;
+        cadena = cadena.replace(" ","");
+        String inv = "";
+        for (int i = cadena.length()-1; i >=0; i--) {
+            inv = inv + cadena.charAt(i);
+        }
+        return cadena.equalsIgnoreCase(inv);
     }
 
     // Método que cuenta el número de palabras en una cadena

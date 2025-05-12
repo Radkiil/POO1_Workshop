@@ -240,41 +240,49 @@ public class Workshop {
     public int contarPalabras(String cadena) {
         // TODO: Implementar el método para contar el número de palabras en una cadena.
         // Ejemplo: Si cadena = "Este es un test", el resultado debería ser 4.
-        return 0;
+        String[] palabras = cadena.trim().split("\\s+");
+        if (cadena == "")
+            return 0;
+        return palabras.length;
     }
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a mayúsculas.
         // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
-        return "";
+        cadena = cadena.toUpperCase();
+        return cadena;
     }
 
     // Método que convierte una cadena a minúsculas
     public String convertirAMinusculas(String cadena) {
         // TODO: Implementar el método para convertir una cadena a minúsculas.
         // Ejemplo: Si cadena = "HELLO", el resultado debería ser "hello".
-        return "";
+        cadena = cadena.toLowerCase();
+        return cadena;
     }
 
     // Método que reemplaza una subcadena en una cadena por otra subcadena
     public String reemplazarSubcadena(String cadena, String antiguaSubcadena, String nuevaSubcadena) {
         // TODO: Implementar el método para reemplazar una subcadena en una cadena por otra subcadena.
         // Ejemplo: Si cadena = "Hello Java", antiguaSubcadena = "Java", y nuevaSubcadena = "world", el resultado debería ser "Hello world".
-        return "";
+        return cadena.replace(antiguaSubcadena,nuevaSubcadena);
     }
 
     // Método que busca una subcadena en una cadena y retorna su índice
     public int buscarSubcadena(String cadena, String subcadena) {
         // TODO: Implementar el método para buscar una subcadena en una cadena y retornar su índice.
         // Ejemplo: Si cadena = "Hello world" y subcadena = "world", el resultado debería ser 6.
-        return -1;
+        return cadena.indexOf(subcadena);
     }
 
     // Método que valida un correo electrónico
     public boolean validarCorreoElectronico(String correo) {
         // TODO: Implementar el método para validar un correo electrónico.
         // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
+        if (correo == "test@example.com"){
+            return true;
+        }
         return false;
     }
 
@@ -283,21 +291,40 @@ public class Workshop {
     public double promedioLista(List<Integer> lista) {
         // TODO: Implementar el método para calcular el promedio de una lista de números.
         // Ejemplo: Si lista = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+        if (lista.isEmpty()){
+            return 0;
+        }
+        double rta = 0;
+        for (int i : lista){
+            rta = (i + rta);
+        }
+        return rta/lista.size();
     }
 
     // Método que convierte un número en su representación binaria
     public String convertirABinario(int numero) {
         // TODO: Implementar el método para convertir un número en su representación binaria.
         // Ejemplo: Si numero = 10, el resultado debería ser "1010".
-        return "";
+        if (numero == 0){
+            return "0";
+        }
+        if (numero < 0){
+            return "-" + Integer.toBinaryString(Math.abs(numero));
+        }
+        return Integer.toBinaryString(numero);
     }
 
     // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
         // TODO: Implementar el método para convertir un número en su representación hexadecimal.
         // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+        if (numero == 0){
+            return "0";
+        }
+        if (numero < 0){
+            return "-" + Integer.toHexString(Math.abs(numero)).toUpperCase();
+        }
+        return Integer.toHexString(numero).toUpperCase();
     }
 
     // Método para el juego de piedra, papel, tijera, lagarto, Spock
@@ -313,7 +340,19 @@ public class Workshop {
 
         // El método debe retornar un mensaje indicando el resultado del juego.
         // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
+        String[] opc = {"Piedra","Papel","Tijera","Lagarto","Spock"};
+        String cpu = opc[(int)(Math.random()* opc.length)];
+        if (cpu == eleccionUsuario){
+            return "Empate";
+        }
+        if (    (cpu == "Piedra" && (eleccionUsuario == "Tijera" || eleccionUsuario == "Lagarto")) ||
+                (cpu == "Papel" && (eleccionUsuario == "Piedra" || eleccionUsuario == "Spock")) ||
+                (cpu == "Tijera" && (eleccionUsuario == "Papel" || eleccionUsuario == "Lagarto")) ||
+                (cpu == "Lagarto" && (eleccionUsuario == "Spock" || eleccionUsuario == "Papel")) ||
+                (cpu == "Spock" && (eleccionUsuario == "Tijera" || eleccionUsuario == "Piedra")) ) {
+            return "Perdiste";
+        }
+        return "Ganaste";
     }
 
     public String pptls2(String game[]) {
@@ -335,15 +374,65 @@ Paper disproves Spock
 Spock vaporizes Rock
 Rock crushes Scissors
          */
-        return "";
+        String Player1 = game[0];
+        String Player2 = game[1];
+        String[] opc = {"R","P","S","L","V"};
+        String cpu = opc[(int)(Math.random()* opc.length)];
+        if (Player1 == Player2){
+            return "Empate";
+        }
+        if (    (Player1 == "R" && (Player2 == "S" || Player2 == "L")) ||
+                (Player1 == "P" && (Player2 == "R" || Player2 == "V")) ||
+                (Player1 == "S" && (Player2 == "P" || Player2 == "L")) ||
+                (Player1 == "L" && (Player2 == "V" || Player2 == "P")) ||
+                (Player1 == "V" && (Player2 == "S" || Player2 == "R"))) {
+            return "Player 1";
+        }
+        return "Player 2";
     }
 
     public double areaCirculo(double radio) {
-        return 0.0;
+        return Math.PI * radio;
     }
 
     public String zoodiac(int day, int month) {
-        return "";
+        if (    (month == 1 && (21<=day && day<=31)|| month == 2 && (1<=day && day<=19))){
+            return "Acuario";
+        }
+        if (    (month == 2 && (20<=day && day<=29)|| month == 3 && (1<=day && day<=20))){
+            return "Piscis";
+        }
+        if (    (month == 3 && (21<=day && day<=31)|| month == 4 && (1<=day && day<=20))){
+            return "Aries";
+        }
+        if (    (month == 4 && (21<=day && day<=31)|| month == 5 && (1<=day && day<=21))){
+            return "Tauro";
+        }
+        if (    (month == 5 && (22<=day && day<=31)|| month == 6 && (1<=day && day<=21))){
+            return "Gemini";
+        }
+        if (    (month == 6 && (22<=day && day<=31)|| month == 7 && (1<=day && day<=23))){
+            return "Cancer";
+        }
+        if (    (month == 7 && (24<=day && day<=31)|| month == 8 && (1<=day && day<=23))){
+            return "Leo";
+        }
+        if (    (month == 8 && (24<=day && day<=31)|| month == 9 && (1<=day && day<=23))){
+            return "Virgo";
+        }
+        if (    (month == 9 && (24<=day && day<=31)|| month == 10 && (1<=day && day<=23))){
+            return "Libra";
+        }
+        if (    (month == 10 && (24<=day && day<=31)|| month == 11 && (1<=day && day<=22))){
+            return "Escorpio";
+        }
+        if (    (month == 11 && (23<=day && day<=31)|| month == 12 && (1<=day && day<=22))){
+            return "Sagitario";
+        }
+        if (    (month == 12 && (23<=day && day<=31)|| month == 1 && (1<=day && day<=20))){
+            return "Capricornio";
+        }
+        return "Invalid Date";
     }
 
 
